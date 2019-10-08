@@ -88,7 +88,7 @@ class Icon extends Column
         $format = '<img src="%s" alt="| %s" title="%s" class="dhl-status-icon"/>';
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as &$item) {
-                if ($item[$fieldname] === null) {
+                if (empty($item[$fieldname])) {
                     $item[$fieldname] = $this->escaper->escapeHtml(__('Not available'));
                 } elseif ($item[$fieldname] === LabelStatus::CODE_PROCESSED) {
                     $src = $this->assetRepo->getUrl('Dhl_LabelStatus::images/icon_complete.png');
